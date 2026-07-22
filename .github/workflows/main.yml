@@ -3,20 +3,20 @@ name: Workshop CI Mentoria
 # [script de pipeline] YAML
 #  [gatilhos] (manual, agendada, quando houver mudanças, etc.)
 on:
-workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   tests:
    #  [config do sistema operacional] (mac/windows/linux/etc)
-runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
 #  [variaveis] (de ambiente, chaves de acesso)
 env:
-API_BASE_URL: 'http://localhost:3000'
-PORT: 4000
+    API_BASE_URL: 'http://localhost:3000'
+    PORT: 4000
 
-steps:
-#  [projetos] (aplicacoes FE/BE, apps, projetos de testes, etc)
+  steps:
+  #  [projetos] (aplicacoes FE/BE, apps, projetos de testes, etc)
 - name: Clone do projeto
   uses: actions/checkout@v6.1.0
 
@@ -25,7 +25,7 @@ steps:
   run: npm install
 
 - name: Iniciando servidor de Mock
-  run: npm run mock-server
+  run: npm run mock-server &
 
 - name: Iniciando servidor da aplicacao
   run: npm run server
